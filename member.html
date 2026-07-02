@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genmate Members</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        h1 {
+            text-align: center;
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+        }
+        .card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #667eea;
+            margin-bottom: 1rem;
+        }
+        .card h2 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .card .info {
+            text-align: left;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        .card .info p {
+            color: #666;
+            margin: 0.3rem 0;
+            font-size: 0.95rem;
+        }
+        .card .info span {
+            color: #333;
+            font-weight: 600;
+        }
+        .card .tag {
+            display: inline-block;
+            background: #667eea;
+            color: #fff;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1> Genmate Members</h1>
+    <div class="container" id="member-container"></div>
+
+    <script>
+        let Genmate = [
+            {
+                id: 1,
+                name: "Base",
+                hometown: "Bangkok",
+                age: "31",
+                favoriteFood: "Sushi"
+            },
+            {
+                id: 2,
+                name: "Faii",
+                hometown: "Korat",
+                age: "27",
+                favoriteFood: "Kapao"
+            },
+            {
+                id: 3,
+                name: "Delta",
+                hometown: "Bangkok",
+                age: "27",
+                favoriteFood: "Everything jinggerbell"
+            },
+            {
+                id: 4,
+                name: "Por",
+                hometown: "Bangkok",
+                age: "24",
+                favoriteFood: "Everything jinggerbell"
+            },
+            {
+                id: 5,
+                name: "Touch",
+                hometown: "Bangkok",
+                age: "24"
+            }
+        ];
+
+        let container = document.getElementById("member-container");
+
+        Genmate.forEach(person => {
+            let food = person.favoriteFood || "Secret menu";
+            let card = document.createElement("div");
+            card.className = "card";
+            card.innerHTML = `
+                <img src="https://ui-avatars.com/api/?name=${person.name}&background=667eea&color=fff&size=120" alt="${person.name}">
+                <h2>${person.name}</h2>
+                <div class="tag">#${person.id}</div>
+                <div class="info">
+                    <p> Hometown: <span>${person.hometown}</span></p>
+                    <p> Age: <span>${person.age}</span></p>
+                    <p> Favorite Food: <span>${food}</span></p>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    </script>
+</body>
+</html>
